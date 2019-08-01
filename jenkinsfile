@@ -14,7 +14,7 @@ pipeline{
      stage('checkout'){
       steps{
         git 'https://github.com/edureka-devops/DevOpsClassCodes.git'
-	echo ${mvnHome}
+	echo "${mvnHome}"
         }
      }
      stage('compile'){
