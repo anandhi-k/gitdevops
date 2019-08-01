@@ -1,0 +1,27 @@
+
+pipeline{
+    env.JAVA_HOME = tool name: 'myjdk', type: 'jdk'
+    def mvnHome = tool name: 'mymaven', type: 'maven'
+    def mvnCMD = "${mvnHome}/bin/mvn"
+    agent any
+    stages{
+     stage('checkout'){
+        git 'https://github.com/edureka-devops/DevOpsClassCodes.git'
+        
+     }
+     stage('compile'){
+        script {
+            sh "${mvnCMD} compile"
+            echo "code is compiled..."
+        }
+        
+     }
+     stage('package'){
+         script {
+            
+            sh "${mvnCMD} package"
+            echo "Package is done....."
+        }   
+    }
+  }
+}
