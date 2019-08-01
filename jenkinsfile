@@ -14,13 +14,16 @@ pipeline{
      stage('checkout'){
       steps{
         git 'https://github.com/edureka-devops/DevOpsClassCodes.git'
-	echo "${mvnHome}"
+	echo "code is pulled from git"
         }
      }
      stage('compile'){
       steps{
         script {
-            sh "${mvnCMD} compile"
+            withMaven{
+
+                sh "mvn compile"
+           }
             
             echo "code is compiled..."
         }
