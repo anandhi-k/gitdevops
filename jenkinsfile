@@ -1,14 +1,9 @@
 
 pipeline{
-
-
-    environment {
-      JAVA_HOME = "myjdk"
-      mvnHome = "mymaven"
-     
-     }
-
-
+    tools {
+      maven 'mymaven'
+      jdk 'myjdk'
+    }
     agent any
     stages{
      stage('checkout'){
@@ -20,11 +15,8 @@ pipeline{
      stage('compile'){
       steps{
         script {
-            withMaven{
-
-                sh "mvn compile"
-           }
-            
+              sh "mvn compile"
+                     
             echo "code is compiled..."
         }
        }
@@ -38,5 +30,5 @@ pipeline{
         }   
        }
     }
-  }
+}
 }
