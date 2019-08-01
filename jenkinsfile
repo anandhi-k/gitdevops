@@ -12,22 +12,27 @@ pipeline{
     agent any
     stages{
      stage('checkout'){
+      steps{
         git 'https://github.com/edureka-devops/DevOpsClassCodes.git'
-        
+        }
      }
      stage('compile'){
+      steps{
         script {
             sh "${mvnCMD} compile"
+            
             echo "code is compiled..."
         }
-        
+       }
      }
      stage('package'){
+       steps{
          script {
             
             sh "${mvnCMD} package"
             echo "Package is done....."
         }   
+       }
     }
   }
 }
