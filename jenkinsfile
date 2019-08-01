@@ -5,7 +5,7 @@ pipeline{
     environment {
       JAVA_HOME = "myjdk"
       mvnHome = "mymaven"
-      mvnCMD = "${mvnHome}/bin/mvn"
+      #mvnCMD = "${mvnHome}/bin/mvn"
      }
 
 
@@ -14,6 +14,7 @@ pipeline{
      stage('checkout'){
       steps{
         git 'https://github.com/edureka-devops/DevOpsClassCodes.git'
+	echo ${mvnHome}
         }
      }
      stage('compile'){
